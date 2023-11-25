@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+
+    <style>
+
+        #compare{
+            display: flex;
+            justify-content: center;
+            margin: 5vh;
+            margin-bottom: -2vh;
+        }
+        #score{
+            display: flex;
+            justify-content: center;
+            /* margin: -5vh; */
+        }
+        #submit{
+            display: flex;
+            justify-content: center;
+            margin: -2vh;
+            
+        }
+
+        #btn{
+            display: flex;
+            justify-content: center;
+            margin: 5vh;
+        }
+
+        .btn{
+            width: 300px;
+        }
+
+        #value{
+            width: 85px;
+            height: 50px;
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
+
+        #min,#max{
+            margin: 5px;
+            
+        }
+        #entermin{
+            width: auto;
+            height: 70px;
+            font-size: 20px;
+            padding-right: 20px;
+            padding-left: 20px;
+            background-color: orangered;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #entermax{
+            width: auto;
+            height: 70px;
+            font-size: 20px;
+            padding-right: 20px;
+            padding-left: 20px;
+            background-color: green;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #enterscore{
+            width: auto;
+            height: 60px;
+            font-size: 20px;
+            padding-right: 30px;
+            padding-left: 30px;
+            background-color: rgb(179, 170, 170);
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <div id="compare">
+        <div id="min">
+            <div id="entermin">
+                <div >100</div>
+            </div>
+            <p style="text-align: center;font-weight: 800;">MIN</p>
+        </div>
+        <div id="max">
+            <div id="entermax">
+                <div>500</div>
+            </div>
+            <p style="text-align: center;font-weight: 800;">MAX</p>
+            
+        </div>
+    </div>
+
+    <div id="score">
+        <div class="score">
+            <p style="text-align: center;font-weight: 800;">SCORE</p>
+            <div id="enterscore"></div>
+        </div>
+    </div>
+
+    <div id="btn">
+        <div class="btn">
+            <button id="value">1</button>
+            <button id="value">2</button>
+            <button id="value">3</button>
+            <button id="value">4</button>
+            <button id="value">5</button>
+            <button id="value">6</button>
+            <button id="value">7</button>
+            <button id="value">8</button>
+            <button id="value">9</button>
+            <button id="value" style="margin-left: 15.5vh;">0</button>
+        </div>
+    </div>
+
+    <div id="submit">
+        <button id="value" class="submit" style="padding: 25px;" onclick="calculate()">ENTER</button>
+    </div>
+</body>
+</html>
+
+<script>
+
+    let min = document.getElementById("entermin")
+    let max = document.getElementById("entermax")
+    let score = document.getElementById("enterscore")
+    let enter = document.getElementsByClassName("submit")
+    let key = document.querySelectorAll(".btn>button")
+
+    for (let i=0; i<key.length; i++){
+        key[i].addEventListener("click",function(){
+            score.innerText += key[i].innerText
+        })
+    }
+
+    function calculate(){
+        if( Number(score.innerText) < Number(min.innerText)){
+            min.innerText = score.innerText;
+            // score.innerText=""
+        }
+        if( Number(score.innerText) > Number(max.innerText)){
+            max.innerText=score.innerText
+            // score.innerText=""
+        }
+        score.innerText="";
+        // if (min && max){
+        //     if (score >= min){
+        //         min.innerText = score
+        //     }
+        //     else{
+        //         max.innerText = score
+        //     }
+        // }
+        // else{
+        //     score.innerText = 0
+        // }
+    }
+</script>
